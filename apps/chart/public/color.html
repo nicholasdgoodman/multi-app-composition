@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+                document.body.style.backgroundColor = color;
+                const ofWin = fin.desktop.Window.getCurrent();
+                //fin.desktop.System.showDeveloperTools(ofWin.uuid,ofWin.name);
+            });
+        </script>
+    </head>
+    <!--<body style="-webkit-app-region:drag">-->
+    <body>
+    </body>
+</html>

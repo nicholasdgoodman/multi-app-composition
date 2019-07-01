@@ -1,0 +1,19 @@
+{
+    "startup_app": {
+        "name": "openfin-iframe-layouts",
+        "description": "OpenFin POC",
+        "url": "http://localhost:4000/",
+        "uuid": "openfin-iframe-layouts",
+        "autoShow": true,
+        "api": {
+            "iframe": {
+                "crossOriginInjection": true
+            }
+        }
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {}
+}

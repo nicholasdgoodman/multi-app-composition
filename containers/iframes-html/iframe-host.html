@@ -1,0 +1,100 @@
+<html>
+<head>
+<style>
+iframe {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.container {
+   height: 100%;
+   width: 100%;
+   margin: 0;
+   display: grid;
+   grid-template-areas: "header header header"
+                        "left main right";
+   grid-template-rows: 40px auto;
+   grid-template-columns: 40px auto 200px;
+}
+
+.topbar {
+   background: cyan;
+   grid-area: header;
+}
+.sidebar {
+   background: aliceblue;
+   grid-area: left;
+}
+.blotter {
+   background: lightcoral;
+   grid-area: main;
+}
+.charts {
+   background: lightgray;
+   grid-area: right;
+   height: 100%;
+}
+
+.chart {
+   position: relative;
+   height: 50%
+}
+
+.topchart {
+   background: lightsalmon;
+}
+
+.bottomchart {
+   background: lightseagreen;
+}
+
+body {
+  padding: 0px;  
+}
+
+</style>
+<script>
+fin.desktop.InterApplicationBus.subscribe("*", "window-manager/popout", (id, uuid, name) => {
+	console.log('popout', id, uuid, name);
+	let iframe = document.getElementById(id);
+	let url = iframe.src;
+	let windowName = iframe.name;
+	
+	iframe.parentNode.removeChild(iframe);
+	
+	window.open(url, windowName);
+});
+
+fin.desktop.InterApplicationBus.subscribe("*", "window-manager/popin", (id, uuid, name) => {
+	console.log('popin', id, uuid, name);
+	
+	let ofWin = fin.desktop.Window.wrap(uuid, name);
+	
+	ofWin.getInfo(info => {
+		let url = info.url;
+		ofWin.close();
+		
+		let iframe = document.createElement('iframe');
+		iframe.src = url;
+		iframe.name = name;
+		iframe.id = name;
+		
+		let parentNode = document.getElementById(name + '-parentNode');
+		parentNode.appendChild(iframe);
+	});
+});
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar"><iframe name="topBarApp" src="http://localhost:3002/color.html"></iframe></div>
+  <div class="sidebar"><iframe name="sideBarApp" src="http://localhost:3002/color.html"></iframe></div>
+  <div class="blotter"><iframe name="blotterApp" src="http://localhost:3001"></iframe></div>
+  <div class="charts">
+	<div id="topChartApp-parentNode" class="chart topchart"><iframe id="topChartApp" name="topChartApp" src="http://localhost:3002/"></iframe></div>
+	<div id="bottomChartApp-parentNode" class="chart bottomchart"><iframe id="bottomChartApp" name="bottomChartApp" src="http://localhost:3002/"></iframe></div>
+  </div>
+</div>
+</body>
+</html>

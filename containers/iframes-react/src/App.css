@@ -1,0 +1,57 @@
+.App {
+  min-height: 100vh;
+  background-color: lightslategray;
+  overflow: hidden;
+}
+
+.container {
+   height: 100vh;
+   margin: 0;
+   display: grid;
+   grid-template-areas: "header header header"
+                        "left main right";
+   grid-template-rows: 40px auto;
+   grid-template-columns: 40px auto 200px;
+}
+
+.topbarApp {
+   background: cyan;
+   grid-area: header;
+}
+.sidebarApp {
+   background: aliceblue;
+   grid-area: left;
+}
+.blotterApp {
+   background: lightcoral;
+   grid-area: main;
+}
+.charts {
+   background: lightgray;
+   grid-area: right;
+   height: 100%;
+}
+
+.chart {
+   position: relative;
+   height: 50%
+}
+
+.topchartApp {
+   background: lightsalmon;
+}
+
+.bottomchartApp {
+   background: lightseagreen;
+}
+
+body {
+  padding: 0px;  
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+   position: relative;
+   border-width: 0px;
+}

@@ -1,0 +1,24 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "openfin-iframe-layouts",
+        "description": "OpenFin POC",
+        "url": "file://C:\\Users\\Nicholas Goodman\\source\\repos\\multi-app-composition\\containers\\iframes-html\\iframe-host.html",
+        "uuid": "openfin-iframe-layouts",
+        "autoShow": true,
+        "api": {
+            "iframe": {
+                "crossOriginInjection": true
+            }
+        }
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Openfin POC",
+        "name": "Openfin POC"
+    }
+}
